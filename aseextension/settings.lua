@@ -1,0 +1,59 @@
+-- This file is based on Settings.lua in the pribambase plugin, subject to
+-- the following license:
+-- Copyright (c) 2021 lampysprites
+-- 
+-- Permission is hereby granted, free of charge, to any person obtaining a copy
+-- of this software and associated documentation files (the "Software"), to deal
+-- in the Software without restriction, including without limitation the rights
+-- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+-- copies of the Software, and to permit persons to whom the Software is
+-- furnished to do so, subject to the following conditions:
+-- 
+-- The above copyright notice and this permission notice shall be included in all
+-- copies or substantial portions of the Software.
+-- 
+-- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+-- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+-- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+-- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+-- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+-- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+-- SOFTWARE.
+
+local dlg = Dialog("RAManimator settings")
+
+local function restoreDefaults()
+    -- we must modify the fields, assigning an `{}` will overwrite
+    -- the reference to the plugin settings, and they won't be affected
+    for key,_ in pairs(ramanimatorPreferences) do
+        ramanimatorPreferences[key] = nil
+    end
+
+    for key,_ in pairs(ramanimatorDefPrefs) do
+        ramanimatorPreferences[key] = ramanimatorDefPrefs[key]
+        dlg:modify{id=key, text=ramanimatorDefPrefs[key]}
+    end
+end
+
+
+local function save()
+    for key,_ in pairs(ramanimatorDefPrefs) do
+        ramanimatorPreferences[key] = dlg.data[key]
+    end
+end
+
+
+dlg:separator{text="Connection"}
+    :entry{id="ip", label="Server", text=ramanimatorPreferences.ip}
+    :entry{id="port", label="Port", text=ramanimatorPreferences.port}
+    --:check{id="window_persistent", label="Remember Window Position", selected=pribambase_settings.window_persistent}
+
+--    :separator{text="Experimental"}
+--    :check{id="layers", label="Per Layer Sync", text="Show", selected=pribambase_settings.layers}
+--
+    :separator()
+    :button{text="Defaults", onclick=restoreDefaults}
+    :button{text="Cancel", focus=true}
+    :button{text="OK", onclick=function() save() dlg:close() end}
+
+    :show()

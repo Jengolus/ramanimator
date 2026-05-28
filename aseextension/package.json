@@ -1,0 +1,13 @@
+{
+	"name": "ramanimator",
+	"displayName": "Live RAM graphics editor",
+	"description": "Scripts that can exchange graphics with a running emulator",
+	"version": "1.0",
+	"author": {"name": "Jengolus"},
+	"categories": [ "Scripts" ],
+	"contributes": {
+		"scripts": [
+			{"path": "./ramanimator.lua"}
+		]
+	}
+}
