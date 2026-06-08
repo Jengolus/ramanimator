@@ -43,6 +43,7 @@ function pkmn.getAnimations(targetSprites)
       --"ramanimator/data/pkmn-gen2crystal-anims-back", -- These two just copy crystal sprites to GS
       --"ramanimator/data/pkmn-gen2crystal-anims-extra",
       "ramanimator/data/jengolus-gen2crystal-back", 
+      "ramanimator/data/accad501-gen2-anims",
     }
   elseif targetSprites == "gen3" then
     -- Only up to gen3, no gender differences, megas etc

@@ -62,4 +62,6 @@ The hooks for mainline games are generated from the [pret repositories](https://
 
 The hooks for modern gen 3 hacks are generated from the [emerald expansion repository](https://github.com/rh-hideout/pokeemerald-expansion), which in turn credits [this thread](https://www.pokecommunity.com/threads/gen-vi-ds-style-64x64-pokemon-sprite-resource.314422/) and [this one](https://www.pokecommunity.com/threads/ds-style-gen-vii-and-beyond-pok%C3%A9mon-sprite-repository-in-64x64.368703/).
 
+Accad501 provided gen 2 front animations for Bulbasaur, Ivysaur, Charmander, Charmeleon, Squirtle, Wartortle, Weedle, Geodude, Gastly, Zubat, Drowzee, Chikorita, Cyndaquil and Totodile.
+
 Pokémon images & names © 1995-2026 Nintendo/Game Freak.
