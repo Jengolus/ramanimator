@@ -798,23 +798,22 @@ function ramanimator.getHook(args)
   end
 
   -- Some extras need to be changed to make them serializable
-  local extras = hook.extras
+  local extras = {}
 
   if extras ~= nil then
-    local extraOverrides = {}
-
-    for name, val in pairs(extras) do
-      if name == "twinTriggers" then
+    for name, val in pairs(hook.extras) do
+      if name == "triggerMask" then
+        -- Pass
+      elseif name == "twinTriggers" then
         local newList = {}
         for _, trigger in ipairs(val) do
           table.insert(newList, base64.encode(trigger))
         end
-        extraOverrides[name] = newList
-      end
-    end
 
-    for k, v in pairs(extraOverrides) do
-      extras[k] = v
+        extras[name] = newList
+      else
+        extras[name] = val
+      end
     end
   end
 
