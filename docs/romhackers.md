@@ -5,7 +5,7 @@ While RAManimator tries to make adapting it to hacks as convenient as possible, 
 
 ## Generate hook files
 
-There is a [separate Git repository](https://www.github.com/Jengolus/ramanimator-tools) that contains the scripts that I used to generate the games' hook files from their pret repositories. While you will most likely need to adept them a bit, this should be quick and save users from updating hooks themselves, which is unfortunately rather cumbersome.
+There is a [separate Git repository](https://www.github.com/Jengolus/ramanimator-tools) that contains the scripts that I used to generate the games' hook files from their pret repositories. While you will most likely need to adapt them a bit, this should be quick and save users from updating hooks themselves, which is unfortunately rather cumbersome.
 
 ## Write the config
 
