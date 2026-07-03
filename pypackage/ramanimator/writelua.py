@@ -1,7 +1,7 @@
 
 """
 We frequently need to render Python data structures as Lua because I
-decided want to reduct the load time of hook and animation data by not
+decided to reduce the load time of hook and animation data by not
 having to pass them through a JSON parser instead.
 """
 
