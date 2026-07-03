@@ -5,7 +5,7 @@ To be considered immutable at runtime.
 
 local raconfig = {}
 
-raconfig.version = "1.0.0"
+raconfig.version = "1.0.1"
 raconfig.logLevel = 0
 raconfig.paletteWarningEmitted = false
 raconfig.featureGbPalettes = emu and emu.writePalette and emu.readPalette
