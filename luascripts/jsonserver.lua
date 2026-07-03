@@ -17,7 +17,7 @@ jsonserver.cmdCallbacks = {}
 
 local debugging = require("debugging")
 
-local dbgout = debugging.getBuffer("jsonserver", 1)
+local dbgout = debugging.getBuffer("jsonserver", 0)
 
 local json = require("json")
 local base64 = require("base64")
@@ -305,7 +305,7 @@ local function receiveAll(sock, id)
 		end
 	end
 
-	sPrint(id, "Full message: " .. tostring(data))
+	sPrint(id, "Received message: " .. tostring(data))
 
 	local command = json.decode(data)
 	if not command then
