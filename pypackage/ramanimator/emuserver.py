@@ -116,7 +116,7 @@ class Emuserver:
     def read_cart(self, start, length):
         """ Read a range from the cartridge """
         ret = self.send_command("readCart", {"offset": start, "length": length})
-        ret = b64dumps(ret["data"])
+        ret = b64loads(ret["data"])
         return MemoryBlock(start, list(ret))
 
     def read_ram(self, start, length):
