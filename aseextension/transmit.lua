@@ -96,13 +96,15 @@ for i, tag in ipairs(sprite.tags) do
 
   if tag.aniDir ~= AniDir.FORWARD then
     for iFrame = toFrame, fromFrame, -1 do
-      table.insert(frameIndices, frameInds[iFrame])
-      table.insert(timings, frameTimings[iFrame])
+      if not (iFrame == toFrame and tag.aniDir == AniDir.PING_PONG) then
+        table.insert(frameIndices, frameInds[iFrame])
+        table.insert(timings, frameTimings[iFrame])
+      end
     end
   end
 
   if tag.aniDir == AniDir.PING_PONG_REVERSE then
-    for iFrame = fromFrame, toFrame do
+    for iFrame = fromFrame + 1, toFrame do
       table.insert(frameIndices, frameInds[iFrame])
       table.insert(timings, frameTimings[iFrame])
     end
