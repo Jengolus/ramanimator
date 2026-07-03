@@ -1071,6 +1071,91 @@ function ramanimator.getAnimation(args)
   return {status="success", name=name, animation=animation}
 end
 
+function ramanimator.getRawAnimation(args)
+  --[[
+  Send an information in raw form, that is with the colors as RGB triplets
+  and the frames as indexed bitmaps. This is essentially the inverse of
+  registerAnimation and provides the data in an interoperable format.
+  --]]
+  local name = args.name
+
+  if name == nil then
+      return {status="Argument name missing"}
+  end
+
+  local animation = nil
+  local width = nil
+  local height = nil
+
+  for _, slot in pairs(library.slots) do
+    for trigger, anim in pairs(slot.animations) do
+      if anim.name == name then
+        local frames = {}
+        for i, frame in ipairs(anim.frames) do
+          local pixels = conversions.vram2frame(frame, slot.width, slot.height, slot.layout)
+          table.insert(frames, base64.encode(pixels))
+        end
+
+        local palettes = nil
+
+        if anim.palettes ~= nil then
+          palettes = {}
+          for _, pal in ipairs(anim.palettes) do
+            -- If the palette is added by the slot
+            local palette = {}
+            if not pal.synthetic or args.includeSyntheticPalettes then
+              for _, color in ipairs(pal) do
+                palette[#palette + 1] = color
+              end
+              table.insert(palettes, conversions.unpackPalette(palette))
+            end
+          end
+        end
+
+        local strips = {}
+        -- Convert frame durations to ms.
+        for iStrip, strip in ipairs(anim.strips) do
+          local newStrip = {}
+          for k, v in pairs(strip) do
+            if k ~= "timings" then
+              newStrip[k] = v
+            else
+              local newTimes = {}
+              for iTime, time in ipairs(v) do
+                newTimes[iTime] = time * 1000 / 60
+              end
+              newStrip[k] = newTimes
+            end
+          end
+
+          strips[iStrip] = newStrip
+        end
+
+        animation = {
+          strips=strips,
+          frames=frames,
+          palettes=palettes,
+        }
+
+        width = 8 * slot.width
+        height = 8 * slot.height
+
+        break
+      end
+    end
+
+    if animation ~= nil then
+      break
+    end
+  end
+
+  if animation == nil then
+    return {status="No animation of that name found", name=name}
+  end
+
+  return {status="success", name=name, animation=animation, width=width, height=height}
+end
+
 function ramanimator.getRunningAnimation(args)
   if library == nil then
     return {status="No library loaded."}
@@ -1163,6 +1248,9 @@ local function ramanimatorCommands(command, args)
 
   elseif command == "getAnimation" then
     return ramanimator.getAnimation(args)
+
+  elseif command == "getRawAnimation" then
+    return ramanimator.getRawAnimation(args)
 
   elseif command == "playAnimation" then
     return ramanimator.playAnimationCmd(args)
