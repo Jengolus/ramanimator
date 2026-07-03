@@ -350,7 +350,8 @@ return anims
         animdata.append(f'{name}={to_lua(anim)}')
         anim["frames"] = raw_frames
 
-    animdata = ",\n".join(animdata) + ","
+    # Sort them alphabetically for better version control
+    animdata = ",\n".join(sorted(animdata)) + ","
 
     if not wrapless:
         animdata = animfile.replace("ANIMDATA", animdata)
