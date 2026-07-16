@@ -17,7 +17,7 @@ raconfig.extras = {}
 function raconfig.warnPalette()
   if emu:platform() == C.PLATFORM.GB then
     if not raconfig.paletteWarningEmitted then
-      console:error("You are playing a Gameboy game on a version of mGBA that does not allow scripts to write to palettes. This means that all animations will appear in the colors that the original sprites have. If you want full color support, read the documentation online.")
+      console:log("You are playing a Gameboy game on a version of mGBA that does not allow scripts to write to palettes. This means that all animations will appear in the colors that the original sprites have. If you want full color support, read the documentation online.")
     end
   else
     if not raconfig.paletteWarningEmitted then
