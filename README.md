@@ -10,14 +10,14 @@ RAManimator comes with partial animations for all mainline Pokémon games of gen
 
 | Generation | 1 | 2 | 3 | Gen 3 Hacks |
 | ---------- |---|---|---| ----- |
-| Front sprites | 43 / 151 in Red & Blue style, others can use Gen 2 animations | 251 / 251, animations are modified loops of those in Crystal | 277 / 420, ported over from Black and White | 495 / 1478, ported over from Black and White |
-| Back sprites | 43 / 151 Crystal back sprites, others use Crystal back sprites without animation | 43 / 251, same as for Gen 1 | 270 / 420, ported over from Black and White | 485 / 1478, ported over from Black and White |
-| Extras | 15 trainers | - | - | - |
+| Front sprites | 51 / 151 in Red & Blue style, others can use Gen 2 animations | 251 / 251, animations are modified loops of those in Crystal | 277 / 420, ported over from Black and White | 495 / 1478, ported over from Black and White |
+| Back sprites | 51 / 151 Crystal back sprites, others use Crystal back sprites without animation | 51 / 251, same as for Gen 1 | 270 / 420, ported over from Black and White | 485 / 1478, ported over from Black and White |
+| Extras | 17 trainers | - | - | - |
 | Color support | [No*](#colors-for-gameboy-games) | [No*](#colors-for-gameboy-games) | Yes | Yes |
 
-For generation 1, RAManimator places the sprites from Crystal by default, though the colors [do not work with mGBA 0.10.5](#colors-for-gameboy-games). 32 front and back sprites as well as some trainers got animated by hand. This includes all monsters that can be found up to the first gym badge, all starter evolutions and some arbitrary extras. [This video](https://youtu.be/dePWJTkMb9A) displays all of them. A few monsters have special animations for when they are low on HP or fainted; for example, the flame on Charmander's tail wanes as its HP decrease.
+For generation 1, RAManimator places the sprites from Crystal by default, though the colors [do not work with mGBA 0.10.5](#colors-for-gameboy-games). 51 front and back sprites as well as some trainers got animated by hand. This includes all monsters that can be found up to the first gym badge, all rival and Giovanni fights as well as some arbitrary extras. [This video](https://youtu.be/dePWJTkMb9A) displays most of them. A few monsters have special animations for when they are low on HP or fainted; for example, the flame on Charmander's tail wanes as its HP decrease.
 
-In generation 2, the front sprites are slightly adapted loops of the Crystal intro animations. The 32 Kanto monster back sprites are animated as well, but no extras.
+In generation 2, the front sprites are slightly adapted loops of the Crystal intro animations. The 51 Kanto monster back sprites are animated as well, but no extras.
 
 For generation 3, the animated sprites from the fifth generation were ported over insofar that was possible. Generation 3 sprites can only be 64x64 pixels large, but gen 5 sprites may fill up to 96x96 pixels. For many small and intermediate monsters, I could just port them over directly. I added a number of intermediate monsters that could fit into the frame with minor modifications, but many late-game monsters are not animated. [This video](https://youtu.be/kphyiA4KuBw) displays all included animations. 
 
