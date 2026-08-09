@@ -16,7 +16,9 @@ class LuaToken:
 def render_dict(data):
     out = []
 
-    for key, val in data.items():
+    # Sort them to make version control work
+    for key in sorted(data.keys()):
+        val = data[key]
         if isinstance(key, str):
             out.append(f"{key}={render(val)}")
         else:
